@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FirstClub Membership Program</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<div class="app-shell">
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-mark">FC</div>
+            <div>
+                <h1>FirstClub</h1>
+                <p>Membership control center</p>
+            </div>
+        </div>
+
+        <section class="panel">
+            <div class="panel-head">
+                <h2>Demo Users</h2>
+                <span class="pill">Click to load</span>
+            </div>
+            <div id="usersList" class="stack"></div>
+        </section>
+
+        <section class="panel">
+            <div class="panel-head">
+                <h2>Tier Ladder</h2>
+                <span class="pill">Eligibility</span>
+            </div>
+            <div id="tierLadder" class="stack"></div>
+        </section>
+    </aside>
+
+    <main class="main">
+        <header class="topbar">
+            <div>
+                <p class="eyebrow">FirstClub Membership Program</p>
+                <h2>Manage plans, tiers, orders, and benefits in one flow</h2>
+            </div>
+            <div class="topbar-actions">
+                <button id="refreshBtn" class="ghost-btn">Refresh</button>
+                <button id="checkEligibleBtn" class="primary-btn">Check Eligible Tier</button>
+            </div>
+        </header>
+
+        <section id="membershipHero" class="hero card">
+            <div class="hero-copy">
+                <p class="eyebrow">Current membership</p>
+                <h3 id="heroTitle">Select a user to get started</h3>
+                <p id="heroSubtitle">Membership status, expiry, and benefits will appear here.</p>
+                <div class="hero-meta">
+                    <span id="heroStatus" class="pill">No user selected</span>
+                    <span id="heroEligibleTier" class="pill soft">Eligible tier: -</span>
+                </div>
+                <div class="progress">
+                    <div id="heroProgress" class="progress-bar"></div>
+                </div>
+                <p id="heroProgressLabel" class="muted"></p>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span>Plan</span>
+                    <strong id="heroPlan">-</strong>
+                </div>
+                <div class="stat">
+                    <span>Tier</span>
+                    <strong id="heroTier">-</strong>
+                </div>
+                <div class="stat">
+                    <span>Expires</span>
+                    <strong id="heroExpiry">-</strong>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-grid">
+            <section class="card">
+                <div class="panel-head">
+                    <h2>Available Plans</h2>
+                    <span class="pill">Auto-calculated</span>
+                </div>
+                <div id="plansGrid" class="grid cards-grid"></div>
+            </section>
+
+            <section class="card form-card">
+                <div class="panel-head">
+                    <h2>Actions</h2>
+                    <span class="pill">Live API</span>
+                </div>
+
+                <form id="subscribeForm" class="form-stack">
+                    <label>
+                        User
+                        <select id="userSelect" required></select>
+                    </label>
+                    <label>
+                        Plan
+                        <select id="planSelect" required></select>
+                    </label>
+                    <label>
+                        Tier
+                        <select id="tierSelect" required></select>
+                    </label>
+                    <button class="primary-btn full" type="submit">Subscribe</button>
+                </form>
+
+                <div class="action-row">
+                    <button id="upgradeBtn" class="secondary-btn">Upgrade</button>
+                    <button id="downgradeBtn" class="secondary-btn">Downgrade</button>
+                    <button id="cancelBtn" class="danger-btn">Cancel</button>
+                </div>
+
+                <form id="orderForm" class="form-stack compact">
+                    <label>
+                        Order amount
+                        <input id="orderAmount" type="number" min="0.01" step="0.01" placeholder="e.g. 499.00" required>
+                    </label>
+                    <button class="primary-btn full" type="submit">Place Order</button>
+                </form>
+            </section>
+        </section>
+
+        <section class="card">
+            <div class="panel-head">
+                <h2>Benefits</h2>
+                <span class="pill">Current tier</span>
+            </div>
+            <div id="benefitsGrid" class="grid benefits-grid"></div>
+        </section>
+
+        <section class="card">
+            <div class="panel-head">
+                <h2>Activity Log</h2>
+                <span class="pill">Recent API events</span>
+            </div>
+            <div id="activityLog" class="activity-log"></div>
+        </section>
+    </main>
+</div>
+
+<div id="toastContainer" class="toast-container"></div>
+<script src="/js/app.js"></script>
+</body>
+</html>
